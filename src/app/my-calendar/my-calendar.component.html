@@ -1,0 +1,42 @@
+<div class="calendar">
+    <div>
+        <h2>{{currentDate | date: 'MMMM YYYY'}}</h2>
+    </div>
+    <div class="header">
+        <div>
+            <button type="button" class="btn" (click)="setDefaultMonth()" *ngIf="!(currentYear == todayYear && currentMonth == todayMonth)">Вернуться на текущую дату</button>
+        </div>
+        <div>
+            <button type="button" class="btn" (click)="setPreviousMonth()"><</button>
+            <button type="button" class="btn" (click)="setNextMonth()">></button>
+        </div>
+    </div>
+    <div class="line line_header">
+        <div class="cell" *ngFor="let day of daysOfWeek">{{ day }}</div>
+    </div>
+    <div class="line" *ngFor="let week of values">
+        <ng-container *ngFor="let day of week; let i = index">
+            <div
+            class="cell" 
+            [ngClass]="{
+                'cell_holiday': (i == 5 || i == 6),
+                'cell_day': (currentYear == todayYear && currentMonth == todayMonth && day == todayDate)
+            }"
+            (click)="cellClick(day)"
+            >
+                {{ day ? day : "" }}
+                <div *ngFor="let data of allDataFromPopup">
+                    {{ data.day == day ? data.name : "" }}
+                </div>
+            </div>
+        </ng-container>
+    </div>    
+</div>
+
+<button (click)="increase()">Increase</button>
+<button (click)="onNgInit()">NgOnInit</button>
+{{count}}
+<ng-template #deal>
+    <p>dfff</p>
+</ng-template>
+

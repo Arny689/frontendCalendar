@@ -1,0 +1,9 @@
+<p>test works!</p>
+<div>{{ word }}</div>
+<!-- <div>{{ data.name }}</div> -->
+<div>{{ data.age }}</div>
+<div>{{ data }}</div>
+<div *ngFor="let data of mydata">{{ data.name }}</div>
+<button (click)="changeAge()" type="button">Click age!</button>
+<button (click)="changeWord()" type="button">Click word!</button>
+<button (click)="changeData()" type="button">Click data!</button>

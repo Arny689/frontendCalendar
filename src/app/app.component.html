@@ -1,0 +1,7 @@
+<div class="container">
+  <!-- <router-outlet></router-outlet> -->
+  <app-my-calendar (onCellClick)="toggleSideMenu()"></app-my-calendar>
+  <app-sidemenu *ngIf="showSidemenu" (sidemenuClose)="toggleSideMenu()"></app-sidemenu>
+  {{showSidemenu}}
+  <app-test></app-test>
+</div>

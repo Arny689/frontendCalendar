@@ -1,0 +1,71 @@
+.calendar {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 2px 6px 3px rgb(38, 38, 38, 0.4);
+    padding: 30px 20px;
+    user-select: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.line {
+    display: flex;
+    height: 60px;
+    &_header {
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
+    .cell {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1px;
+        border-radius: 8px;
+        font-size: 19px;
+        color: white;
+        background-color: #cbcbcb;
+        cursor: pointer;
+        &:hover {
+            background-color: #bcbcbc;
+        }
+        &_holiday {
+            background-color: rgb(255, 129, 129);
+            &:hover {
+                background-color: rgb(175, 79, 79);
+            }
+        }
+        &_day {
+            border: 2px solid darksalmon;
+        }
+        div {
+            // flex: 1;
+            overflow: hidden;
+            font-size: 50%;
+        }
+    }
+}
+
+.btn {
+    border: none;
+    padding: 10px 12px;
+    background-color: rgb(113, 113, 246);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(99, 99, 241);
+    }
+}
+
+h2 {
+    margin-bottom: 15px;
+}

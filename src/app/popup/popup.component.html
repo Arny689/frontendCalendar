@@ -1,0 +1,17 @@
+<div class="popup-container">
+    <div class="popup" [formGroup]="form">
+        <label for="name">Название дела</label>
+      <input id="name" type="text" placeholder="Введите название дела" formControlName="name">
+      <div *ngIf="allForms.name.invalid && allForms.name.touched" class="alert">
+        <div *ngIf="allForms.name.errors?.['required']">Введите название дела...</div>
+        <div *ngIf="allForms.name.errors?.['maxlength']">Превышена максимальная длинна названия 12 символов...</div>
+        <div *ngIf="allForms.name.errors?.['minlength']">Минимальаня длинна названия должна быть 4 символа...</div>
+      </div>
+      <label for="description">Описание дела</label>
+      <input id="description" type="text" placeholder="Введите описание дела" formControlName="description">
+      <label for="explanation">Пояснение к делу</label>
+      <input id="explanation" type="text" placeholder="Введите пояснение к делу" formControlName="explanation">
+      <button (click)="createData()">OK</button>
+      <button (click)="toCalendar()">Назад</button>
+    </div>
+</div>

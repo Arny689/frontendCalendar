@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="side-menu">
+        <div>
+            <h2>Дела</h2>
+            <div (click)="sidemenuOff()">&times;</div>
+        </div>
+        
+        <ul *ngIf="data.name else noData"> 
+            <!-- <p> {{data.name}} </p> -->
+            <li *ngIf="data?.name"> {{data.name}} </li>
+            <li *ngIf="data?.description"> {{data.description}} </li>
+            <li *ngIf="data?.explanation"> {{data.explanation}} </li>
+        </ul>
+        <ng-template #noData>
+          <div>
+            <p>{{data.year}}</p>
+            <p>{{data.month}}</p>
+            <p>{{data.day}}</p>
+          </div>
+        </ng-template>
+        <button (click)="popupOn()">Добавить запись</button>
+    </div>
+</div>
+
+<div class="popup-layout" *ngIf="popup" (click)="popupOff()">
+    <div class="add-form" [formGroup]="form" (click)="formClick($event)">
+        <div class="close">
+           <h2>Дела</h2> 
+           <div (click)="popupOff()">
+                &times;
+           </div>
+        </div>
+        <label for="name">
+            Name
+            <input type="text" placeholder="Name" formControlName="name">
+        </label>
+        <div class="alert" *ngIf="getFormControls.name.touched && getFormControls.name.invalid">
+            <div *ngIf="getFormControls.name.errors?.['required']">
+                Вы забыли ввести имя
+            </div>
+            <div *ngIf="getFormControls.name.errors?.['minlength']">
+                Введенное имя слишком короткое
+            </div>
+            <div *ngIf="getFormControls.name.errors?.['maxlength']">
+                Введенное имя слишком длинное
+            </div>
+        </div>
+        <label for="description">
+            Description <input type="text" placeholder="Description" formControlName="description" name="description">
+        </label>
+        <label for="explanation">
+            Explanation <input type="text" placeholder="Explanation" formControlName="explanation" name="explanation">
+        </label>
+        <button class="btn" (click)="sendData()">Добавить оповещение к делам</button>
+    </div>
+</div>
